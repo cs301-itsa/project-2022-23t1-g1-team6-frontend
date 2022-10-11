@@ -8,12 +8,11 @@ function App() {
     useEffect(() => {
         fetch('https://ir99p85259.execute-api.us-east-1.amazonaws.com/IntegrationTesting')
         .then((response) => {
-                console.log(response);
-                console.log(response.json());
                 return response.json()
         })
         .then((actualData) => {
                 console.log("Writing....");
+                console.log(actualData);
                 setData(actualData.body);
                 console.log(actualData.body);
               })
