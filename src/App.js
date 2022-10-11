@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`https://ir99p85259.execute-api.us-east-1.amazonaws.com/IntegrationTesting`)
+        fetch(`https://ir99p85259.execute-api.us-east-1.amazonaws.com/IntegrationTesting`, { mode: `no-cors` })
         .then((response) => {
                 return response.json()
         })
