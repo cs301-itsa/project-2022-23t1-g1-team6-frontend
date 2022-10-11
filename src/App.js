@@ -1,13 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
+  const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch(`https://q78sk6ga6d.execute-api.us-east-1.amazonaws.com/test`)
+        .then((response) => {
+                return response.json()
+        })
+        .then((actualData) => {
+                console.log("Writing....");
+                setData(actualData.body);
+                console.log(actualData.body);
+              })
+    }, []);
+
+    return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload from Github Actions with React2.
+        </p>
+        <p> {data}
         </p>
         <a
           className="App-link"
@@ -17,9 +34,10 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
-  );
+    </header>
+   </div>
+    );
 }
 
 export default App;
+
